@@ -1,0 +1,38 @@
+{
+  "name": "moviedb",
+  "version": "1.0.0",
+  "description": "Replica of themoviedb.org",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toopham/moviedb.git"
+  },
+  "keywords": [
+    "movies",
+    "database"
+  ],
+  "author": "Tu Pham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toopham/moviedb/issues"
+  },
+  "homepage": "https://github.com/toopham/moviedb#readme",
+  "devDependencies": {
+    "babel-loader": "^8.2.3",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.5.1",
+    "express": "^4.17.2",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.65.0"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "^6.2.1",
+    "react-router-dom": "^6.2.1"
+  }
+}
