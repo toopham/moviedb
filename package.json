@@ -4,7 +4,10 @@
   "description": "Replica of themoviedb.org",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "cross-env NODE_ENV=production webpack",
+    "start": "cross-env NODE_ENV=production node server/server.js",
+    "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.js\" \"webpack serve --open --hot\""
   },
   "repository": {
     "type": "git",
@@ -21,12 +24,21 @@
   },
   "homepage": "https://github.com/toopham/moviedb#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
     "babel-loader": "^8.2.3",
+    "concurrently": "^6.5.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
     "express": "^4.17.2",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.15",
     "style-loader": "^3.3.1",
-    "webpack": "^5.65.0"
+    "url-loader": "^4.1.1",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.1"
   },
   "dependencies": {
     "axios": "^0.24.0",

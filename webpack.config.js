@@ -11,15 +11,11 @@ module.exports = {
   },
   mode: process.env.NODE_ENV,
   devServer: {
-    // Required for docker if needed
-    host: '0.0.0.0',
     port: 8080,
     hot: true,
-    // fallback to root for other urls
     historyApiFallback: true,
     static: {
-      directory: path.resolve(__dirname, 'dist'),
-      publicPath: '/'
+      publicPath: '/dist',
     },
     proxy: {
       '/api/**': {
@@ -35,6 +31,9 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+						presets: ['@babel/preset-env', '@babel/preset-react']
+					}
         },
       },
       {
@@ -42,14 +41,18 @@ module.exports = {
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(jpe?g|png|gif|svg)(\?[a-z0-9=.]+)?$/,
+        loader: 'url-loader',
+      },
     ],
-    plugins: [
-      new HtmlWebpackPlugin({
-        favicon: path.resolve(__dirname, './client/assets/images/moviedb.ico'),
-        template: './client/index.html'
-      })
-    ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      //favicon: path.resolve(__dirname, './client/assets/images/moviedb.ico'),
+      template: './client/index.html'
+    })
+  ],
   resolve: {
     //Enable importing js or jsx without specifying type
     extensions: ['.js', '.jsx'],
