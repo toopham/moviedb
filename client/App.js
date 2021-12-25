@@ -1,6 +1,7 @@
 import React from 'react';
 import "./stylesheets/style.css";
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Main from './components/Main';
 import Search from './components/Search/Search';
 import {
@@ -16,8 +17,9 @@ const App = (props) => {
     <Header />
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route path="/search" element={<Search />} />
+      <Route path="/search/*" element={<Search />} />
     </Routes>
+    <Footer />
     </Router>);
 }
 

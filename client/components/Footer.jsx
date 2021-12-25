@@ -21,12 +21,11 @@ const Header = (props) => {
   if(searchBar) navSearchBar=<NavSearchBar />;
 
 
-	return <div className="header"><div className="navbar">
-    <Link to='/'><img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="MovieDB" className="logo-img" /></Link>
-    <Nav />
-    <NavSearch searchBar={searchBar} setSearchBar={setSearchBar} />
-    {navSearchBar}
-    </div></div>;
+	return <div className="footer">
+    <h3>Author: Tu Pham</h3>
+
+    <p>Disclaimer: This website is a personal project to try to replicate the design and implementation of themoviedb.org</p>
+    </div>;
 };
 
 

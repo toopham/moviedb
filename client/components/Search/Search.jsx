@@ -7,19 +7,20 @@ import axios from 'axios';
 const Search =  (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query").replace(' ','+');
-
+  let page = 1;
+  if(searchParams.get("page")) page = Number(searchParams.get("page"));
   const [results, setResults ] = useState({movies: {results: []}, tv: {results: []}});
 
   useEffect(() => {
-    axios.get('/api/search?query='+query)
+    axios.get('/api/search?page='+page+'&query='+query)
       .then(res => res.data)
       .then(data => setResults(data))
       .catch(err => console.log('ERROR: ', err));
-  }, [query]);
+  }, [query, page]);
 
 	return <div className="search">
-  <SearchFilter />
-  <SearchResults results={results}/>
+  <SearchFilter query={query} />
+  <SearchResults results={results} page={page} query={query} setSearchParams={setSearchParams} />
   </div>
 };
 

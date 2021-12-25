@@ -11,12 +11,14 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
 }
 
 
 /* ****START****** STYLING FOR HEADER AND NAVBAR */
 .header {
   height: 80px;
+  width: 100%;
   background-color: #073b4c;
   display: flex;
   flex-direction: row;
@@ -87,6 +89,7 @@ nav ul {
   justify-content: flex-start;
   align-items: flex-end;
   list-style-type: none;
+  padding-left: 40px;
 }
 
 nav ul li {
@@ -110,6 +113,7 @@ nav ul li {
 .main {
   margin: 0px;
   padding: 0px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 
@@ -175,6 +179,8 @@ textarea:focus, input:focus{
   padding-top: 80px;
   padding-left: 30px;
   padding-right: 30px;
+  margin-bottom: 30px;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -186,23 +192,6 @@ textarea:focus, input:focus{
   height: 500px;
   box-sizing: border-box;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-}
-
-.search-filter-header {
-  border: 1px solid gainsboro;
-  border-radius: 10px 10px 0px 0px;
-  background-color: #01b3e5;
-  padding: 10px;
-  font-weight: bold;
-  color: white;
-  box-sizing: border-box;
-}
-
-.search-filter-categories {
-  border: 1px solid gainsboro;
-  border-radius: 0px 0px 10px 10px ;
-  padding: 10px;
-  box-sizing: border-box;
 }
 
 .search-results {
@@ -236,17 +225,130 @@ textarea:focus, input:focus{
 .movie-placard-detail {
   width: 100%;
   height: 141px;
-  padding-left: 10px;
-  border-radius: 0px 10px 10px 0px;
-  border: 1px solid gainsboro;
+  padding: 10px;
+  box-sizing: border-box;
   overflow: hidden;
+}
+
+.rating {
+  padding: 10px;
 }
 
 h3 {
   font-size: 1em;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 h4 {
   font-size: .9em;
   color: rgb(194, 192, 192);
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+
+.search-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.page-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.page-button {
+  padding: 5px;
+}
+
+.page-button-active {
+  border: 1px solid black;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+/* START : STYLING FOR SEARCH FILTER COMPONENT */
+.search-filter-header {
+  border: 1px solid gainsboro;
+  border-radius: 10px 10px 0px 0px;
+  background-color: #01b3e5;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+  box-sizing: border-box;
+}
+
+.search-filter-categories {
+  border: 1px solid gainsboro;
+  border-radius: 0px 0px 10px 10px ;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.filter-header {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 0px;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: 1em;
+  justify-content: flex-start;
+  align-items: flex-start;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+
+.search-filter-categories ul li {
+  background-color: white;
+  text-decoration: none;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+
+
+.search-filter-categories ul li:hover {
+  background-color: gainsboro;
+}
+
+.search-filter-categories ul li.activeCat {
+  background-color: gainsboro;
+  font-weight: bold;
+}
+
+a:link, a:visited{
+  color: black;
+  text-decoration: none;
+}
+
+
+
+/* END : STYLING FOR SEARCH FILTER COMPONENT */
+
+
+/* START : STYLING FOR FOOTER */
+.footer {
+  height: 80px;
+  width: 100%;
+  background-color: #073b4c;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
