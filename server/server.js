@@ -9,6 +9,11 @@ app.use('/', express.static(path.resolve(__dirname, '../dist/')));
 
 app.get('/api/search', searchController.search, (req, res) => res.status(200).json(res.locals.results));
 
+app.get('/api/searchsort', searchController.searchSort, searchController.sort, searchController.page , (req, res) => res.status(200).json(res.locals.results));
+
+app.get('/api/popular', searchController.popular, (req, res) => res.status(200).json(res.locals.popular));
+
+
 
 app.use('/api/test', (req, res) => res.status(200).json({message: 'SUCCESSFULLY CALLED API'}));
 
