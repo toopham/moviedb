@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = (props) => {
+const Footer = (props) => {
 
 	return <div className="footer">
     <h3>Author: Tu Pham</h3>
@@ -10,4 +10,4 @@ const Header = (props) => {
 };
 
 
-export default Header;
+export default Footer;
