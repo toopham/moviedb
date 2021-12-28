@@ -174,7 +174,14 @@ textarea:focus, input:focus{
 }
 
 /* START: STYLING FOR POPULAR COMPONENT*/
-
+.popular-wrapper{
+  width: 100%;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
 .popular {
   width: 100%;
   padding: 10px;
@@ -190,7 +197,7 @@ textarea:focus, input:focus{
 
 .movie-card {
   width: 220px;
-  height: 400px;
+  height: 450px;
   margin: 15px;
   display: flex;
   flex-direction: column;
@@ -199,6 +206,7 @@ textarea:focus, input:focus{
 .movie-poster {
   width: 220px;
   height: 310px;
+  min-height: 310px;
   border-radius: 10px 10px 10px 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
@@ -212,6 +220,11 @@ textarea:focus, input:focus{
   margin-top: 20px;
 }
 
+.rating-div {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  color: gray;
+  padding-top: 15px;
+}
 
 ::-webkit-scrollbar {
   width: 15px;
@@ -267,6 +280,28 @@ textarea:focus, input:focus{
   font-family: 'Source Sans Pro', Arial, sans-serif;
 }
 
+.loading-card {
+  width: 100%;
+  height: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.error-card {
+  width: 100%;
+  height: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 10px 10px 10px 10px;
+}
+
 .movie-placard {
   width: 100%;
   height: 141px;
@@ -284,9 +319,9 @@ textarea:focus, input:focus{
 
 .movie-placard-img {
   width: 94px;
+  min-width: 94px;
   height: 141px;
   border-radius: 10px 0px 0px 10px;
-  border: 1px solid gainsboro;
 }
 
 .movie-placard-detail {
@@ -414,4 +449,61 @@ a:link, a:visited{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+
+/* STYLING FOR MODAL */
+div.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.modal-inner {
+  position: relative;
+  padding: 0px;
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.movie-modal {
+  width: 100%;
+  height: 330px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px 10px 10px 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.movie-modal-img {
+  width: 220px;
+  min-width: 220px;
+  height: 330px;
+  border-radius: 10px 0px 0px 10px;
+  border: 1px solid gainsboro;
+}
+
+.movie-modal-detail {
+  height: 330px;
+  padding: 10px;
+  overflow: auto;
+}
+
+button {
+  background: white;
+  border: 1px solid gainsboro;
+}
+
+button:hover {
+  background: #073b4c;
+  color: white;
 }
