@@ -15,6 +15,8 @@ npm install
 To access the API from themoviedb.org, you will need an API key. You can get an API key by creating an account at themoviedb.org
 Go to this link and follow instruction on how to get the API key: https://developers.themoviedb.org/3/getting-started/introduction
 Once you have the API key, create a file called secret.js in the main directory moviedb and entered this into the file
+
+secret.js
 ```
 const API_KEY = 'ENTER YOUR API KEY HERE';
 
