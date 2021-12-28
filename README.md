@@ -18,7 +18,7 @@ Go to this link and follow instruction on how to get the API key: https://develo
 Once you have the API key, create a file called secret.js in the main directory moviedb and entered this into the file
 
 secret.js
-```code
+```js
 const API_KEY = 'ENTER YOUR API KEY HERE';
 
 module.exports = API_KEY;
