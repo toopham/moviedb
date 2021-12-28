@@ -18,7 +18,7 @@ app.get('/api/searchsort', searchController.searchSort, searchController.sort, s
 app.get('/api/popular', searchController.popular, (req, res) => res.status(200).json(res.locals.popular));
 
 //Error Catching from Middleware
-app.use((req,res) => res.status(404).jason('CANNOT FIND PAGE'));
+app.use((req,res) => res.status(404).json('CANNOT FIND PAGE'));
 app.use( (err, req, res, next) => {
 	return res.redirect(500,'/');
 });
