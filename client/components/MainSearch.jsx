@@ -6,10 +6,7 @@ const MainSearch = (props) => {
 
   const Search = () => {
     const searchInput = document.getElementById('mainSearchBarInput');
-    
-    console.log('Value of search is : ', searchInput.value);
     navigate("/search?query="+searchInput.value, { replace: true});
-
   }
 
   const enterSearch = (e) =>{
