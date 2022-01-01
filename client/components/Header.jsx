@@ -11,7 +11,7 @@ const Header = (props) => {
 
   //Display NavSearchBar if the route is search
   useEffect(()=> {
-    if(location.pathname === '/search'){
+    if(location && location.pathname === '/search'){
       setSearchBar(true);
     }
   }, [location.pathname]);

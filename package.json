@@ -4,11 +4,18 @@
   "description": "Replica of themoviedb.org",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "jest --verbose",
     "build": "cross-env NODE_ENV=production webpack",
     "start": "cross-env NODE_ENV=production node server/server.js",
     "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.js\" \"webpack serve --open --hot\""
   },
+	"jest": {
+		"moduleNameMapper": {
+				 "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+				 "\\.(css|less)$": "./__mocks__/fileMock.js"
+			 },
+		"testEnvironment": "jsdom"
+	},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/toopham/moviedb.git"
@@ -26,13 +33,16 @@
   "devDependencies": {
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-react": "^7.16.5",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "babel-loader": "^8.2.3",
     "concurrently": "^6.5.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
+    "enzyme": "^3.11.0",
     "express": "^4.17.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.4.5",
     "nodemon": "^2.0.15",
     "style-loader": "^3.3.1",
     "url-loader": "^4.1.1",
