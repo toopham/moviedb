@@ -102,17 +102,15 @@ describe('React unit tests for landing components', () => {
     let wrapper;
 
     beforeAll(() => {
-      wrapper = shallow(<MainSearch />);
-
+      wrapper = mount(<Router><MainSearch /></Router>);
+			wrapper = wrapper.find(MainSearch);
     });
 
-		it('Renders MainSearch component ', () => {
-      expect(wrapper.find(MainSearch)).toHaveLength(1);
+		it('Renders MainSearch div with 4 children ', () => {
+			expect(wrapper.find({ className: 'mainSearch'})).toHaveLength(1);
+			expect(wrapper.find({ className: 'mainSearch'}).children()).toHaveLength(3);
     });
 
-		it('Renders Popular component ', () => {
-      expect(wrapper.find(Popular)).toHaveLength(1);
-    });
 
 	});
 
