@@ -132,51 +132,129 @@ describe('React unit tests for landing components', () => {
 
 	});
 
-	describe('default Modal component with no modal', () => {
-    let wrapper;
-		let props = {
-      modal: [false, {}],
-			setModal: jest.fn(() => 'set Modal'),
-    };
+  describe('Modal component', () => {
+    describe('default Modal component when props is set false', () => {
+      let wrapper;
+      let props = {
+        modal: [false, {}],
+        setModal: jest.fn(() => 'set Modal'),
+      };
 
-    beforeAll(() => {
-      wrapper = shallow(<Modal {...props} />);
+      beforeAll(() => {
+        wrapper = shallow(<Modal {...props} />);
+      });
+
+      it('Renders nothing when props is set to false.', () => {
+        expect(wrapper.type()).toEqual(null);;
+      });
+
     });
 
-		it('Renders nothing when props is set to false.', () => {
-			expect(wrapper.type()).toEqual(null);;
-		});
+    describe('Modal component when props is set true', () => {
+      let wrapper;
+      let props = {
+        modal: [true, {}],
+        setModal: jest.fn(() => 'set Modal'),
+      };
 
-	});
+      beforeAll(() => {
+        wrapper = shallow(<Modal {...props} />);
+      });
 
-	describe('Modal component when triggered', () => {
-    let wrapper;
-		let props = {
-      modal: [true, {}],
-			setModal: jest.fn(() => 'set Modal'),
-    };
 
-    beforeAll(() => {
-      wrapper = shallow(<Modal {...props} />);
+      it('Renders modal with className modal when props is set to true.', () => {
+        expect(wrapper.type()).toEqual('div');;
+        expect(wrapper.find({className: 'modal'})).toHaveLength(1);
+        expect(wrapper.props().onClick()).toEqual('set Modal');
+      });
+
+      it('Renders modal-inner with 1 child', ()=> {
+        expect(wrapper.find({className: 'modal-inner'})).toHaveLength(1);
+        expect(wrapper.find({className: 'modal-inner'}).children()).toHaveLength(1);
+      });
+
+      it('Renders MovieModal ', ()=>{
+        expect(wrapper.find(MovieModal)).toHaveLength(1);
+      });
+
+    });
+  });
+
+  describe('MovieModal component', () => {
+    describe('MovieModal component when there is no backdrop image', () => {
+      let wrapper;
+      let props = {
+          movie: {title: 'Movie Title', 
+          original_title: 'Original Title', 
+          release_date: '01-01-2022', 
+          original_language: 'English', 
+          overview: 'Overview of movie',
+          backdrop_path: null,
+        },
+      };
+
+      beforeAll(() => {
+        wrapper = shallow(<MovieModal {...props} />);
+      });
+
+      it('Renders wrapper with className movie-modal.', () => {
+        expect(wrapper.type()).toEqual('div');;
+        expect(wrapper.find({className: 'movie-modal'})).toHaveLength(1);
+      });
+
+      it('Renders img div movie-modal-img with black background.', () => {
+        expect(wrapper.find({className: 'movie-modal-img'}).type()).toEqual('div');
+        expect(wrapper.find({className: 'movie-modal-img'}).props().style).toHaveProperty('background', 'black');
+      });
+
+      it('Renders div movie-modal-detail.', () => {
+        expect(wrapper.find({className: 'movie-modal-detail'}).type()).toEqual('div');
+      });
+
+      it('Renders information of movie from props', () => {
+        expect(wrapper.find({className: 'movie-modal-detail'}).children()).toHaveLength(5);
+        expect(wrapper.find('h3').text()).toEqual('Title: '+props.movie.title);
+      });
+
     });
 
+    describe('MovieModal component when there is a backdrop image', () => {
+      let wrapper;
+      let props = {
+          movie: {title: 'Movie Title', 
+          original_title: 'Original Title', 
+          release_date: '01-01-2022', 
+          original_language: 'English', 
+          overview: 'Overview of movie',
+          backdrop_path: '/path_to_img',
+        },
+      };
 
-		it('Renders modal with className modal when props is set to true.', () => {
-			expect(wrapper.type()).toEqual('div');;
-			expect(wrapper.find({className: 'modal'})).toHaveLength(1);
-			expect(wrapper.props().onClick()).toEqual('set Modal');
-		});
+      beforeAll(() => {
+        wrapper = shallow(<MovieModal {...props} />);
+      });
 
-		it('Renders modal-inner with 1 child', ()=> {
-			expect(wrapper.find({className: 'modal-inner'})).toHaveLength(1);
-			expect(wrapper.find({className: 'modal-inner'}).children()).toHaveLength(1);
-		});
+      it('Renders wrapper with className movie-modal.', () => {
+        expect(wrapper.type()).toEqual('div');;
+        expect(wrapper.find({className: 'movie-modal'})).toHaveLength(1);
+      });
 
-		it('Renders MovieModal ', ()=>{
-			expect(wrapper.find(MovieModal)).toHaveLength(1);
-		});
+      it('Renders img div movie-modal-img with black background.', () => {
+        expect(wrapper.find({className: 'movie-modal-img'}).type()).toEqual('div');
+        expect(wrapper.find({className: 'movie-modal-img'}).props().style).toHaveProperty('backgroundImage', `url("https://www.themoviedb.org/t/p/w220_and_h330_face${props.movie.backdrop_path}")`);
+      });
 
+      it('Renders div movie-modal-detail.', () => {
+        expect(wrapper.find({className: 'movie-modal-detail'}).type()).toEqual('div');
+      });
+
+      it('Renders information of movie from props', () => {
+        expect(wrapper.find({className: 'movie-modal-detail'}).children()).toHaveLength(5);
+        expect(wrapper.find('h3').text()).toEqual('Title: '+props.movie.title);
+      });
+    });
 	});
+
 
 
 

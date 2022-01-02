@@ -21,11 +21,10 @@ const MovieModal = (props) =>{
     {displayImg}
     <div className="movie-modal-detail">
       <h3>Title: {props.movie.title}</h3>
-        <div><b>Original Title: </b>: {props.movie.original_title} </div>
-        <div><b>Release Date: </b>: {setDate(props.movie.release_date)}</div>
-        <div><b>Original Language: </b>: {language[props.movie.original_language]}</div>
-        <div><b>Release Date: </b>: {setDate(props.movie.release_date)}</div>
-        <div><b>Overview</b>: {props.movie.overview}</div>
+      <div><b>Original Title: </b>: {props.movie.original_title} </div>
+      <div><b>Release Date: </b>: {setDate(props.movie.release_date)}</div>
+      <div><b>Original Language: </b>: {language[props.movie.original_language]}</div>
+      <div><b>Overview</b>: {props.movie.overview}</div>
     </div>
   </div>;
 };
