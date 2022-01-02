@@ -106,13 +106,78 @@ describe('React unit tests for landing components', () => {
 			wrapper = wrapper.find(MainSearch);
     });
 
-		it('Renders MainSearch div with 4 children ', () => {
+		it('Renders mainSearch div with 4 children ', () => {
 			expect(wrapper.find({ className: 'mainSearch'})).toHaveLength(1);
 			expect(wrapper.find({ className: 'mainSearch'}).children()).toHaveLength(3);
     });
 
+		it('Renders h1 and h2 ', () => {
+			expect(wrapper.find('h1')).toHaveLength(1);
+			expect(wrapper.find('h2')).toHaveLength(1);
+			expect(wrapper.find('h1').text()).toEqual('Welcome.');
+			expect(wrapper.find('h2').text()).toEqual('This is a replica of themoviedb.org');
+		});
+
+		it('Renders mainSearchBar with input ', () => {
+			expect(wrapper.find({id: 'mainSearchBar'})).toHaveLength(1);
+			expect(wrapper.find({id: 'mainSearchBar'}).children()).toHaveLength(2);
+			expect(wrapper.find({id: 'mainSearchBar'}).type()).toEqual('div');
+			expect(wrapper.find({id: 'mainSearchBarInput'}).type()).toEqual('input');
+		});	
+
+		it('Renders searchButton', () => {
+			expect(wrapper.find({id: 'searchButton'})).toHaveLength(1);
+			expect(wrapper.find({id: 'searchButton'}).type()).toEqual('button');
+		});
 
 	});
+
+	describe('default Modal component with no modal', () => {
+    let wrapper;
+		let props = {
+      modal: [false, {}],
+			setModal: jest.fn(() => 'set Modal'),
+    };
+
+    beforeAll(() => {
+      wrapper = shallow(<Modal {...props} />);
+    });
+
+		it('Renders nothing when props is set to false.', () => {
+			expect(wrapper.type()).toEqual(null);;
+		});
+
+	});
+
+	describe('Modal component when triggered', () => {
+    let wrapper;
+		let props = {
+      modal: [true, {}],
+			setModal: jest.fn(() => 'set Modal'),
+    };
+
+    beforeAll(() => {
+      wrapper = shallow(<Modal {...props} />);
+    });
+
+
+		it('Renders modal with className modal when props is set to true.', () => {
+			expect(wrapper.type()).toEqual('div');;
+			expect(wrapper.find({className: 'modal'})).toHaveLength(1);
+			expect(wrapper.props().onClick()).toEqual('set Modal');
+		});
+
+		it('Renders modal-inner with 1 child', ()=> {
+			expect(wrapper.find({className: 'modal-inner'})).toHaveLength(1);
+			expect(wrapper.find({className: 'modal-inner'}).children()).toHaveLength(1);
+		});
+
+		it('Renders MovieModal ', ()=>{
+			expect(wrapper.find(MovieModal)).toHaveLength(1);
+		});
+
+	});
+
 
 
 });
