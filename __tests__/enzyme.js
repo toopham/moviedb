@@ -3,6 +3,7 @@ import { configure, shallow, mount} from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { BrowserRouter as Router, Link} from 'react-router-dom';
 import { PieChart } from 'react-minimal-pie-chart';
+import {setDate} from '../client/constants/date';
 
 //Main components
 import Footer from '../client/components/Footer';

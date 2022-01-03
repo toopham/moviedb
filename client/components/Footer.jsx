@@ -1,3 +1,13 @@
+/**
+ * ************************************
+ *
+ * @module  Main
+ * @author Tu Pham
+ * @date 1-3-2022
+ * @description Footer of page
+ * ************************************
+ */
+
 import React from 'react';
 
 const Footer = (props) => {

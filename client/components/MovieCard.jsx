@@ -1,12 +1,18 @@
+/**
+ * ************************************
+ *
+ * @module  Main
+ * @author Tu Pham
+ * @date 1-3-2022
+ * @description MovieCard in Popular component to display all popular movies
+ * ************************************
+ */
+
 import React from 'react';
-import Rating from './Search/Rating';
+import {setDate} from '../constants/date';
 
 const MovieCard = (props) => {
-  const months = ['None', 'Ja', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const setDate = (str) =>{
-    const strArr = str.split('-')
-    return months[Number(strArr[1])]+' '+strArr[2]+', '+strArr[0];
-  }
+
 
   return (<div className="movie-card" onClick={() => props.setModal([true,props.movie])}>
       <div className="movie-poster" style={{backgroundImage: `url("https://www.themoviedb.org/t/p/w220_and_h330_face/${props.img}")`}}></div>

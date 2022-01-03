@@ -1,3 +1,13 @@
+/**
+ * ************************************
+ *
+ * @module  Search
+ * @author Tu Pham
+ * @date 1-3-2022
+ * @description SearchFilter to sort search results
+ * ************************************
+ */
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -12,7 +22,7 @@ const SearchFilter = (props) => {
 
 
   return <div className="search-filter">
-    <div className="search-filter-header">Search Results</div>
+      <div className="search-filter-header">Search Results</div>
       <div className="search-filter-categories">
         <div className="filter-header">Movies</div>
         {sort}

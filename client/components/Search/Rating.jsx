@@ -1,3 +1,14 @@
+/**
+ * ************************************
+ *
+ * @module  Search
+ * @author Tu Pham
+ * @date 1-3-2022
+ * @description Rating component to see movie rating
+ *
+ * ************************************
+ */
+
 import React from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
 

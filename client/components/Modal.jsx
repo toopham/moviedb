@@ -1,3 +1,13 @@
+/**
+ * ************************************
+ *
+ * @module  Main
+ * @author Tu Pham
+ * @date 1-3-2022
+ * @description Modal to display when click on movieplacard
+ * ************************************
+ */
+
 import React from 'react';
 import MovieModal from './MovieModal';
 

@@ -1,16 +1,22 @@
+/**
+ * ************************************
+ *
+ * @module  Main
+ * @author Tu Pham
+ * @date 1-3-2022
+ * @description MovieModal component to display detailed information within the Modal component about the movie when Modal is triggered
+ * ************************************
+ */
+
 import React from 'react';
-import Rating from './Search/Rating';
+import {setDate} from '../constants/date';
 
 const MovieModal = (props) =>{
+
+  //language const to convert server lang data into readable data
   const language = { en: 'English', zh: 'Chinese'};
-  const months = ['None', 'Ja', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const setDate = (str) =>{
-    if(str){
-      const strArr = str.split('-')
-    return months[Number(strArr[1])]+' '+strArr[2]+', '+strArr[0];
-    }
-    else return 'No Release Date';
-  }
+
+
 
   let displayImg = <div className="movie-modal-img" style={{background: 'black'}} ></div>;
 

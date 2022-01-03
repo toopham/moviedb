@@ -1,3 +1,13 @@
+/**
+ * ************************************
+ *
+ * @module  Main
+ * @author Tu Pham
+ * @date 1-3-2022
+ * @description MainSearch component on landing page to store the main search bar
+ * ************************************
+ */
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
