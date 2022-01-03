@@ -1,3 +1,14 @@
+/**
+ * ************************************
+ *
+ * @module  Search
+ * @author Tu Pham
+ * @date 1-3-2022
+ * @description Rating component to see movie rating
+ *
+ * ************************************
+ */
+
 import React from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
 
@@ -16,17 +27,17 @@ const Rating = (props) => {
   if(rate <70 && rate > 50) data[0].color = '#fcbf49';
 
   return <div className="rating">
-    Rating: {props.rate}%
-    <PieChart
-  data={data}
-  lineWidth={55}
-  startAngle={0}
-  animate={true}
-  radius={8}
-  center={[20,20]}
-  viewBoxSize={[50,50]}
-  />
-  </div>;
+      Rating: {props.rate}%
+      <PieChart
+        data={data}
+        lineWidth={55}
+        startAngle={0}
+        animate={true}
+        radius={8}
+        center={[20,20]}
+        viewBoxSize={[50,50]}
+        />
+    </div>;
 };
 
 export default Rating;

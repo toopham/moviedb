@@ -291,6 +291,20 @@ textarea:focus, input:focus{
   border-radius: 10px 10px 10px 10px;
 }
 
+.no-results {
+  width: 100%;
+  height: 200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
 .error-card {
   width: 100%;
   height: 300px;

@@ -1,3 +1,13 @@
+/**
+ * ************************************
+ *
+ * @module  Main
+ * @author Tu Pham
+ * @date 1-3-2022
+ * @description Header of Page
+ * ************************************
+ */
+
 import React, {useState, useEffect} from 'react';
 import Nav from './Nav';
 import NavSearch from './NavSearch';
@@ -11,7 +21,7 @@ const Header = (props) => {
 
   //Display NavSearchBar if the route is search
   useEffect(()=> {
-    if(location.pathname === '/search'){
+    if(location && location.pathname === '/search'){
       setSearchBar(true);
     }
   }, [location.pathname]);
@@ -21,12 +31,18 @@ const Header = (props) => {
   if(searchBar) navSearchBar=<NavSearchBar />;
 
 
-	return <div className="header"><div className="navbar">
-    <Link to='/'><img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="MovieDB" className="logo-img" /></Link>
-    <Nav />
-    <NavSearch searchBar={searchBar} setSearchBar={setSearchBar} />
-    {navSearchBar}
-    </div></div>;
+	return <div className="header">
+      <div className="navbar">
+      <Link to='/'>
+        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" 
+        alt="MovieDB" 
+        className="logo-img" />
+      </Link>
+      <Nav />
+      <NavSearch searchBar={searchBar} setSearchBar={setSearchBar} />
+      {navSearchBar}
+      </div>
+    </div>;
 };
 
 

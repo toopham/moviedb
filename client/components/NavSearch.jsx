@@ -14,7 +14,7 @@ const NavSearch = (props) => {
   };
 
   return <div className="nav-search">
-    <div onClick={() => toggleSearch()}>{icon}</div>
+      <div onClick={() => toggleSearch()}>{icon}</div>
     </div>;
 }
 
