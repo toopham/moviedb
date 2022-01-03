@@ -18,15 +18,15 @@ const MovieModal = (props) =>{
   else displayImg = <div className="movie-modal-img" style={{backgroundImage: `url("https://www.themoviedb.org/t/p/w220_and_h330_face${props.movie.backdrop_path}")`}} ></div>;
 
   return <div className="movie-modal">
-    {displayImg}
-    <div className="movie-modal-detail">
-      <h3>Title: {props.movie.title}</h3>
-      <div><b>Original Title: </b>: {props.movie.original_title} </div>
-      <div><b>Release Date: </b>: {setDate(props.movie.release_date)}</div>
-      <div><b>Original Language: </b>: {language[props.movie.original_language]}</div>
-      <div><b>Overview</b>: {props.movie.overview}</div>
-    </div>
-  </div>;
+      {displayImg}
+      <div className="movie-modal-detail">
+        <h3>Title: {props.movie.title}</h3>
+        <div><b>Original Title: </b>: {props.movie.original_title} </div>
+        <div><b>Release Date: </b>: {setDate(props.movie.release_date)}</div>
+        <div><b>Original Language: </b>: {language[props.movie.original_language]}</div>
+        <div><b>Overview</b>: {props.movie.overview}</div>
+      </div>
+    </div>;
 };
 
 export default MovieModal;

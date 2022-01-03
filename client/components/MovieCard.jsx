@@ -9,7 +9,7 @@ const MovieCard = (props) => {
   }
 
   return (<div className="movie-card" onClick={() => props.setModal([true,props.movie])}>
-    <div className="movie-poster" style={{backgroundImage: `url("https://www.themoviedb.org/t/p/w220_and_h330_face/${props.img}")`}}></div>
+      <div className="movie-poster" style={{backgroundImage: `url("https://www.themoviedb.org/t/p/w220_and_h330_face/${props.img}")`}}></div>
       <div className="movie-detail">
         <h3>{props.title}</h3>
         <h4>{setDate(props.date)}</h4>

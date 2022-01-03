@@ -15,7 +15,7 @@ const Search =  (props) => {
   if(searchParams.get("page")) page = Number(searchParams.get("page"));
 
 
-  const [results, setResults ] = useState({movies: {results: []}});
+  const [results, setResults ] = useState({movies: {results: [], }, total_results: -1});
   const [errorTrigger, setError] = useState(false);
   const [modal, setModal] = useState([false, {}]);
 

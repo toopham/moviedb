@@ -30,11 +30,13 @@ const Pagination = (props) => {
     nextPage = <Link to={`?query=${props.query}&sortby=${sortby}&order=${orderby}&page=${props.page+1}`} key='next'><div className="page-button" >Next</div></Link>;
   }
 
-  return <div className="search-footer"><div className="page-bar">
-    {props.page > 1? prevPage: []}
-    {pages}
-    {props.page < props.totalPages? nextPage: []}
-  </div></div>;
+  return <div className="search-footer">
+      <div className="page-bar">
+        {props.page > 1? prevPage: []}
+        {pages}
+        {props.page < props.totalPages? nextPage: []}
+      </div>
+    </div>;
 };
 
 export default Pagination;
