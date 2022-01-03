@@ -6,9 +6,9 @@ import Popular from './Popular';
 const Main = (props) => {
 
 	return <div className="main">
-    <MainSearch />
-    <Popular />
-  </div>;
+      <MainSearch />
+      <Popular />
+    </div>;
 };
 
 
