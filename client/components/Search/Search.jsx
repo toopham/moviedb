@@ -8,19 +8,20 @@ import axios from 'axios';
 
 const Search =  (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get("query").replace(' ','+');
+  let query = '';
+  if(searchParams.get("query")) query = searchParams.get("query").replace(' ','+');
   const sortBy = searchParams.get("sortby");
   const orderBy = searchParams.get("order");
   let page = 1;
   if(searchParams.get("page")) page = Number(searchParams.get("page"));
 
 
-  const [results, setResults ] = useState({movies: {results: [], }, total_results: -1});
+  const [results, setResults ] = useState({movies: {results: [], total_results: -1}});
   const [errorTrigger, setError] = useState(false);
   const [modal, setModal] = useState([false, {}]);
 
   useEffect(() => {
-    setResults({movies: {results: []}});
+    setResults({movies: {results: [], total_results: -1}});
 
     if(searchParams.get("sortby")){
       axios.get('/api/searchsort?sortby='+sortBy+'&order='+orderBy+'&page='+page+'&query='+query)
@@ -44,8 +45,16 @@ const Search =  (props) => {
   }, [query, page, sortBy, orderBy]);
 
   const error = <Error />;
-  const searchResults = (<><SearchFilter query={query} />
-  <SearchResults results={results} page={page} query={query} searchParams={searchParams} setSearchParams={setSearchParams} setModal={setModal} /><Modal modal={modal} setModal={setModal}/></>);
+  const searchResults = (<>
+    <SearchFilter query={query} />
+    <SearchResults results={results} 
+      page={page} 
+      query={query} 
+      searchParams={searchParams} 
+      setSearchParams={setSearchParams} 
+      setModal={setModal}
+    />
+    <Modal modal={modal} setModal={setModal}/></>);
 
 	return <div className="search">{errorTrigger? error: searchResults}</div>;
 

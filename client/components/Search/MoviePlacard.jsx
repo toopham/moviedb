@@ -18,8 +18,11 @@ const MoviePlacard = (props) =>{
 
   return <div className="movie-placard" onClick={()=>props.setModal([true, props.movie])}>
     {displayImg}
-    <div className="movie-placard-detail"><h3>{props.movie.title}</h3><h4>{setDate(props.movie.release_date)}</h4>
-    <p>{props.movie.overview}</p></div>
+    <div className="movie-placard-detail">
+      <h3>{props.movie.title}</h3>
+      <h4>{setDate(props.movie.release_date)}</h4>
+      <p>{props.movie.overview}</p>
+    </div>
     <Rating rate={Number(props.movie.vote_average)*10} />
   </div>;
 };

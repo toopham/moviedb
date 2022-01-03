@@ -9,7 +9,7 @@ const Pagination = (props) => {
 
   const pages = [];
   for(let i = 1; i <= props.totalPages; i++){
-    if(i==props.page) pages.push(<div className="page-button-active" key = {i} onClick={() => changePage(i)}>{i}</div>);
+    if(i==props.page) pages.push(<div className="page-button-active" key = {i} >{i}</div>);
     else{
       if(sortby) pages.push(<Link to={`?query=${props.query}&sortby=${sortby}&order=${orderby}&page=${i}`} key={i}><div className="page-button" key = {i}>{i}</div></Link>);
       else pages.push(<Link to={`?query=${props.query}&page=${i}`} key={i}><div className="page-button" key = {i}>{i}</div></Link>);

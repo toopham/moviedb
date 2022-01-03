@@ -2,7 +2,7 @@ import React from 'react';
 import { configure, shallow, mount} from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { BrowserRouter as Router, Link} from 'react-router-dom';
-
+import { PieChart } from 'react-minimal-pie-chart';
 
 //Main components
 import Footer from '../client/components/Footer';
@@ -253,6 +253,83 @@ describe('React unit tests for landing components', () => {
         expect(wrapper.find('h3').text()).toEqual('Title: '+props.movie.title);
       });
     });
+
+
+    describe('Nav component', () => {
+      let wrapper;
+  
+      beforeAll(() => {
+        wrapper = shallow(<Nav />);
+      });
+  
+      it('Renders a <nav> wrapper with one child ul', () => {
+        expect(wrapper.type()).toEqual('nav');
+        expect(wrapper.children()).toHaveLength(1);
+      });
+
+      it('Renders a <ul> with 4 li', () => {
+        expect(wrapper.find('ul').children()).toHaveLength(4);
+      });
+    });
+
+    describe('NavSearch component', () => {
+      let wrapper;
+  
+      beforeAll(() => {
+        wrapper = shallow(<NavSearch />);
+      });
+  
+      it('Renders a <div> wrapper with one child div', () => {
+        expect(wrapper.type()).toEqual('div');
+        expect(wrapper.children()).toHaveLength(1);
+      });
+
+    });
+
+    describe('NavSearchBar component', () => {
+      let wrapper;
+  
+      beforeAll(() => {
+        wrapper = mount(<Router><NavSearchBar /></Router>);
+        wrapper = wrapper.find(NavSearchBar);
+      });
+  
+      it('Renders a <div> wrapper with 3 children elements', () => {
+        expect(wrapper.find({className: 'nav-search-bar'}).type()).toEqual('div');
+        expect(wrapper.find({className: 'nav-search-bar'}).children()).toHaveLength(3);
+      });
+
+      it('Renders a input navSearchBarInput', () => {
+        expect(wrapper.find({id: 'navSearchBarInput'})).toHaveLength(1);
+      });
+
+    });
+
+    describe('NavSearchBar component', () => {
+      let wrapper;
+  
+      beforeAll(() => {
+        wrapper = shallow(<Popular />);
+      });
+  
+      it('Renders a <div> wrapper with className popular-wrapper', () => {
+        expect(wrapper.type()).toEqual('div');
+        expect(wrapper.children()).toHaveLength(2);
+      });
+
+      it('Renders a div with className popular', () => {
+        expect(wrapper.find({className: 'popular'})).toHaveLength(1);
+      });
+
+      it('Renders a div with className sort-options', () => {
+        expect(wrapper.find({className: 'sort-options'})).toHaveLength(1);
+      });
+
+      it('Renders Modal component', () => {
+        expect(wrapper.find(Modal)).toHaveLength(1);
+      });
+
+    });
 	});
 
 
@@ -278,6 +355,318 @@ describe('React unit tests for Search components', () => {
       expect(wrapper.find('h3').text()).toEqual('Cannot connect to server API');
       expect(wrapper.find('h4').text()).toEqual('Please try again later.');
     });
+  });
+
+
+  describe('Loading component', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(<Loading />);
+    });
+
+    it('Renders a <div> tag with 3 children', () => {
+      expect(wrapper.type()).toEqual('div');
+      expect(wrapper.children()).toHaveLength(3);
+    });
+
+    it('Renders h3 and h4', () => {
+      expect(wrapper.type()).toEqual('div');
+      expect(wrapper.find('h3').text()).toEqual('Searching & Loading Results');
+      expect(wrapper.find('h4').text()).toEqual('Please be patient.');
+    });
+
+    it('Renders img', () => {
+      expect(wrapper.find('img')).toHaveLength(1);
+    });
+  });
+
+  describe('MoviePlacard component', () => {
+    describe('MoviePlacard component with no poster_path', () => {
+      let wrapper;
+      const props = {
+        setModal: jest.fn(() => 'set Modal'),
+        movie: {
+          title: 'Dragon', 
+          release_date: '01-01-2022',
+          overview: 'Overview of Movie',
+          vote_average: 7.9,
+          poster_path: null, }
+      };
+
+      beforeAll(() => {
+        wrapper = shallow(<MoviePlacard {...props}/>);
+      });
+
+      it('Renders a <div> wrapper tag with onClick', () => {
+        expect(wrapper.type()).toEqual('div');
+        expect(wrapper.children()).toHaveLength(3);
+        expect(wrapper.props().onClick()).toEqual('set Modal');
+      });
+
+      it('Renders a <div> className movie-placard-detail', () => {
+        expect(wrapper.find({className: 'movie-placard-detail'})).toHaveLength(1);
+        expect(wrapper.find({className: 'movie-placard-detail'}).children()).toHaveLength(3);
+      });
+
+      it('Renders a <div> className movie-placard-img', () => {
+        expect(wrapper.find({className: 'movie-placard-img'})).toHaveLength(1);
+        expect(wrapper.find({className: 'movie-placard-img'}).props().style).toHaveProperty('background', 'black');
+      });
+
+      it('Renders a Rating component', () => {
+        expect(wrapper.find(Rating)).toHaveLength(1);
+        expect(wrapper.find(Rating).props().rate).toEqual(79);
+      });
+
+    });
+
+    describe('MoviePlacard component with poster_path', () => {
+      let wrapper;
+      const props = {
+        setModal: jest.fn(() => 'set Modal'),
+        movie: {
+          title: 'Dragon', 
+          release_date: '01-01-2022',
+          overview: 'Overview of Movie',
+          vote_average: 9.9,
+          poster_path: '/path/to/poster', }
+      };
+
+      beforeAll(() => {
+        wrapper = shallow(<MoviePlacard {...props}/>);
+      });
+
+      it('Renders a <div> wrapper tag with onClick', () => {
+        expect(wrapper.type()).toEqual('div');
+        expect(wrapper.children()).toHaveLength(3);
+        expect(wrapper.props().onClick()).toEqual('set Modal');
+      });
+
+      it('Renders a <div> className movie-placard-detail', () => {
+        expect(wrapper.find({className: 'movie-placard-detail'})).toHaveLength(1);
+        expect(wrapper.find({className: 'movie-placard-detail'}).children()).toHaveLength(3);
+      });
+
+      it('Renders a <div> className movie-placard-img', () => {
+        expect(wrapper.find({className: 'movie-placard-img'})).toHaveLength(1);
+        expect(wrapper.find({className: 'movie-placard-img'}).props().style).toHaveProperty('backgroundImage', `url(\"https://image.tmdb.org/t/p/w94_and_h141_bestv2${props.movie.poster_path}")`);
+      });
+
+      it('Renders a Rating component', () => {
+        expect(wrapper.find(Rating)).toHaveLength(1);
+        expect(wrapper.find(Rating).props().rate).toEqual(99);
+      });
+
+    });
+  });
+
+  describe('Pagination component', () => {
+    let wrapper;
+    const props = {
+      page: 2,
+      totalPages: 5,
+      query: 'Dragon',
+      searchParams: {get: (param) => param}, 
+    };
+
+    beforeAll(() => {
+      wrapper = shallow(<Pagination {...props}/>);
+    });
+
+    it('Renders a <div> wrapper tag', () => {
+      expect(wrapper.type()).toEqual('div');
+      expect(wrapper.children()).toHaveLength(1);
+    });
+
+    it('Renders a 99 pages with 1 active', () => {
+      expect(wrapper.find({className: 'page-button'})).toHaveLength(6);
+      expect(wrapper.find({className: 'page-button-active'})).toHaveLength(1);
+      expect(wrapper.find({className: 'page-button-active'}).text()).toEqual('2');
+    });
+  });
+
+  describe('Rating component', () => {
+    let wrapper;
+    const props = {
+      rate: 99
+    };
+
+    beforeAll(() => {
+      wrapper = shallow(<Rating {...props}/>);
+    });
+
+    it('Renders a <div> wrapper tag', () => {
+      expect(wrapper.type()).toEqual('div');
+      expect(wrapper.text()).toMatch('Rating: 99%');
+    });
+
+    it('Renders a PieChart', () => {
+      expect(wrapper.find(PieChart)).toHaveLength(1);
+    });
+  });
+
+  describe('Search component', () => {
+    let wrapper;
+    const props = {
+      query: 'Dragon',
+      searchParams: {get: (param) => param}, 
+    };
+
+    beforeAll(() => {
+      wrapper = mount(<Router><Search {...props}/></Router>);
+      wrapper = wrapper.find(Search);
+    });
+
+    it('Renders SearchFilter and SearchResults and Modal components', () => {
+      expect(wrapper.find(SearchFilter)).toHaveLength(1);
+      expect(wrapper.find(SearchResults)).toHaveLength(1);
+      expect(wrapper.find(Modal)).toHaveLength(1);
+    });
+
+  });
+
+  describe('SearchFilter component', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(<SearchFilter />);
+    });
+
+    it('Renders div wrapper', () => {
+      expect(wrapper.type()).toEqual('div');
+      expect(wrapper.children()).toHaveLength(2);
+    });
+
+
+    it('Renders search-filter-header and search-filter-categories', () => {
+      expect(wrapper.find({className: 'search-filter-header'})).toHaveLength(1);
+      expect(wrapper.find({className: 'search-filter-categories'})).toHaveLength(1);
+    });
+
+  });
+
+  describe('SearchResults component', () => {
+    describe('SearchResults component with 2 results', () => {
+      let wrapper;
+      const props = {
+        page: 2,
+        setModal: jest.fn(() => 'set Modal'),
+        setPage: jest.fn(() => 'set Page'),
+        query: 'Dragon',
+        searchParams: {get: (param) => param}, 
+        results: {
+          movies: {
+            results: [
+              {id: '12345',},
+              {id: '67890',},
+            ],
+            total_results: 2,
+          },
+        },
+      }
+
+      beforeAll(() => {
+        wrapper = shallow(<SearchResults {...props} />);
+      });
+
+      it('Renders div wrapper', () => {
+        expect(wrapper.type()).toEqual('div');
+        expect(wrapper.children()).toHaveLength(3);
+      });
+
+      it('Renders MoviePlacards', () => {
+        expect(wrapper.find(MoviePlacard)).toHaveLength(2);
+      });
+
+      it('Does not render Loading component and no-results ', () => {
+        expect(wrapper.find({className: 'no-results'})).toHaveLength(0);
+        expect(wrapper.find(Loading)).toHaveLength(0);
+      });
+
+      it('Renders Pagination', () => {
+        expect(wrapper.find(Pagination)).toHaveLength(1);
+      });
+
+
+    });
+
+    describe('SearchResults component with no results', () => {
+      let wrapper;
+      const props = {
+        page: 2,
+        setModal: jest.fn(() => 'set Modal'),
+        setPage: jest.fn(() => 'set Page'),
+        query: 'Dragon',
+        searchParams: {get: (param) => param}, 
+        results: {
+          movies: {
+            results: [
+            ],
+            total_results: 0,
+          },
+        },
+      }
+
+      beforeAll(() => {
+        wrapper = shallow(<SearchResults {...props} />);
+      });
+
+      it('Renders div wrapper', () => {
+        expect(wrapper.type()).toEqual('div');
+        expect(wrapper.children()).toHaveLength(2);
+      });
+
+      it('Renders no-results div ', () => {
+        expect(wrapper.find({className: 'no-results'})).toHaveLength(1);
+        expect(wrapper.find(Loading)).toHaveLength(0);
+      });
+
+      it('Renders Pagination', () => {
+        expect(wrapper.find(Pagination)).toHaveLength(1);
+      });
+
+
+    });
+
+    describe('SearchResults component while Loading results from API', () => {
+      let wrapper;
+      const props = {
+        page: 2,
+        setModal: jest.fn(() => 'set Modal'),
+        setPage: jest.fn(() => 'set Page'),
+        query: 'Dragon',
+        searchParams: {get: (param) => param}, 
+        results: {
+          movies: {
+            results: [
+            ],
+            total_results: -1,
+          },
+        },
+      }
+
+      beforeAll(() => {
+        wrapper = shallow(<SearchResults {...props} />);
+      });
+
+      it('Renders div wrapper', () => {
+        expect(wrapper.type()).toEqual('div');
+        expect(wrapper.children()).toHaveLength(2);
+      });
+
+      it('Renders Loading component ', () => {
+        expect(wrapper.find({className: 'no-results'})).toHaveLength(0);
+        expect(wrapper.find(Loading)).toHaveLength(1);
+      });
+
+      it('Renders Pagination', () => {
+        expect(wrapper.find(Pagination)).toHaveLength(1);
+      });
+
+
+    });
+
   });
 
 });

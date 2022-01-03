@@ -66,7 +66,6 @@ const Popular = (props) => {
   return <div className="popular-wrapper">
     <div className="popular">
       {errTrigger? errorMessage:movieCards}
-      {errTrigger? '':sortOptions}
       <Modal modal={modal} setModal={setModal} />
     </div>
     {errTrigger? '':sortOptions}
